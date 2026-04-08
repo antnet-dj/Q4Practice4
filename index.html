@@ -17,7 +17,42 @@
             <br>
             <input type="password" id="pwd" class="form-control" placeholder="Enter here" required>
             <br>
+
+        <input type="button" name="button" id="loginBTN" value="Login" class="btn btn-info rounded-5" onclick="authenticate()">
     </form>
+
+    <script>
+        let attempt_counter = 0;
+        function authenticate(){
+            let username = document.getElementById("uname").value;
+            let pwd = document.getElementById("pwd").value;
+            let granted = "Welcome " + username + "!";
+            let denied = "Access denied. Account locked after 3 attempts!";
+        }
+
+        while (attempt_counter < 3){
+            if (username === "rainbowdash" && password === "applejack") {
+                alert(granted);
+                attempt_counter = 0;
+                document.getElementById("display").innerHTML = "";
+                window.location.href = "dashboard.html"
+             break;
+            }
+        }
+
+        else {
+            attempt_counter++;
+            document.getElementById("display").innerHTML =
+                "Incorrect username and/or password. Attempt " + attempt_counter + " of 3 ";
+            break; 
+        }
+
+        if (attempt_counter >= 3) {
+                alert(denied);
+                document.getElementById("loginBTN").disabled = true; 
+            }
+        }
+    </script>
 
 </body>
 </html>
