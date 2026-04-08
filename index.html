@@ -21,38 +21,35 @@
         <input type="button" name="button" id="loginBTN" value="Login" class="btn btn-info rounded-5" onclick="authenticate()">
     </form>
 
-    <script>
-        let attempt_counter = 0;
-        function authenticate(){
-            let username = document.getElementById("uname").value;
-            let pwd = document.getElementById("pwd").value;
-            let granted = "Welcome " + username + "!";
-            let denied = "Access denied. Account locked after 3 attempts!";
-        }
+<script>
+    let attempt_counter = 0;
 
-        while (attempt_counter < 3){
-            if (username === "rainbowdash" && password === "applejack") {
-                alert(granted);
-                attempt_counter = 0;
-                document.getElementById("display").innerHTML = "";
-                window.location.href = "dashboard.html"
-             break;
-            }
-        }
+    function authenticate(){
+        let username = document.getElementById("uname").value;
+        let pwd = document.getElementById("pwd").value;
 
+        let granted = "Welcome " + username + "!";
+        let denied = "Access denied. Account locked after 3 attempts!";
+
+        if (username === "rainbowdash" && pwd === "applejack") {
+            alert(granted);
+            attempt_counter = 0;
+            document.getElementById("display").innerHTML = "";
+            window.location.href = "dashboard.html";
+        } 
+        
         else {
             attempt_counter++;
             document.getElementById("display").innerHTML =
-                "Incorrect username and/or password. Attempt " + attempt_counter + " of 3 ";
-            break; 
-        }
+                "Incorrect username and/or password. Attempt " + attempt_counter + " of 3";
 
-        if (attempt_counter >= 3) {
+            if (attempt_counter >= 3) {
                 alert(denied);
-                document.getElementById("loginBTN").disabled = true; 
+                document.getElementById("loginBTN").disabled = true;
+            }
         }
-        
-    </script>
+    }
+</script>
 
 </body>
 </html>
